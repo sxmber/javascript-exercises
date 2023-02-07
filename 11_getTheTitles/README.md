@@ -15,7 +15,7 @@ const books = [
 ]
 ```
 
-Your job is to write a function that takes the array and returns an array of titles:
+Your job is to wrie at function that takes the array and returns an array of titles:
 
 ```javascript
 getTheTitles(books) // ['Book','Book2']
