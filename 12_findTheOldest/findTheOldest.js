@@ -1,17 +1,31 @@
 const findTheOldest = function (people) {
     const oldest = people.sort(function (a, b) {
-        const lastInventor = a.yearOfDeath - a.yearOfBirth;
-        const nextInventor = b.yearOfDeath - b.yearofBirth;
-        return lastInventor > nextInventor ? -1 : 1;
+        if (!a.hasOwnProperty('yearOfDeath')) {
+            let person1 = (new Date().getFullYear() - a.yearOfBirth);
+            let person2 = (b.yearOfDeath - b.yearOfBirth);
+            return person2 - person1;
+        }
+        if (!b.hasOwnProperty('yearOfDeath')) {
+            let person1 = (a.yearOfDeath - a.yearOfBirth);
+            let person2 = (new Date().getFullYear() - b.yearOfBirth);
+            return person2 - person1;
+        }
+
+        else {
+            let person1 = (a.yearOfDeath - a.yearOfBirth);
+            let person2 = (b.yearOfDeath - b.yearOfBirth);
+            return person2 - person1;
+        }
+
     });
-    console.log(oldest);
+    console.log("oldest", oldest);
+    return oldest[0];
 
 };
 const people = [
     {
         name: "Carly",
-        yearOfBirth: 1942,
-        yearOfDeath: 1970,
+        yearOfBirth: 2018,
     },
     {
         name: "Ray",
@@ -24,6 +38,6 @@ const people = [
         yearOfDeath: 1941,
     },
 ]
-console.log(findTheOldest(people));
+findTheOldest(people);
 // Do not edit below this line
 module.exports = findTheOldest;
